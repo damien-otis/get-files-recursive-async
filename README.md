@@ -7,7 +7,7 @@ var getFilesRecursiveAsync = require('getFilesRecursiveAsync');
 
 var folder = "~/";
 
-var filetypes = ".js";
+var filetypes = ["js","css"];
 
 getFilesRecursiveAsync(folder,callback,filetypes,progress);
 
