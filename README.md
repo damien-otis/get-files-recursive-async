@@ -5,8 +5,9 @@ Usage:
 
 var getFilesRecursiveAsync = require('getFilesRecursiveAsync');
 
-var folder = "~/"
-var filetypes = ".js"
+var folder = "~/";
+
+var filetypes = ".js";
 
 getFilesRecursiveAsync(folder,callback,filetypes,progress);
 
