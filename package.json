@@ -1,0 +1,14 @@
+{
+  "name": "get-files-recursive-async",
+  "version": "1.0.0",
+  "description": "Gets all files asynchronously given a folder path, with progress updates and filetype filter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Damien Otis",
+  "license": "ISC"
+}
