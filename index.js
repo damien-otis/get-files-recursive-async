@@ -6,6 +6,12 @@ var fs = require('fs');
 //
 function getFilesRecursiveAsync(folder,callback,filetypes,progress){
   var files = [];
+
+  var filetype_regexp = [];
+  for (var i=0;i<filetypes.length;i++){
+    filetype_regexp.push(new RegExp(filetypes[i]+'$','i'))
+  }
+
   function recurseFolders(thisfolder,thiscallback){
     fs.readdir(thisfolder,function(err,fold){
       var arr = [];
@@ -52,9 +58,9 @@ function getFilesRecursiveAsync(folder,callback,filetypes,progress){
   recurseFolders(folder,callback);
 
   function fileMatch(file){
-    var ext = file.split(".").pop().toLowerCase()
-    for (var i=0;i<filetypes.length;i++){
-      if (filetypes[i] == ext){
+    //var ext = file.split(".").pop().toLowerCase()
+    for (var i=0;i<filetype_regexp.length;i++){
+      if (file.match(filetype_regexp[i]) !== null) {
         return true
       }
     }
