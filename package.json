@@ -10,5 +10,8 @@
     "nodejs"
   ],
   "author": "Damien Otis",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "path": "^0.12.7"
+  }
 }
