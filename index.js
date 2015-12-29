@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 
 //*****************************************************************************************************
-//non-blocking double-recursive list of files, with file extension matching - node.js
+//non-blocking recursive list of files, with file extension matching - node.js
 //
 function getFilesRecursiveAsync(folder,callback,filetypes,progress){
   var files = [];
