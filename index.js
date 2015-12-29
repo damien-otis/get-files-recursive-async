@@ -17,14 +17,14 @@ function getFilesRecursiveAsync(folder,callback,filetypes,progress){
         thiscallback(null,files)
       }
       function iterateFiles(){
-        var path = path.resolve(thisfolder + "\\" + fold.shift());
-        fs.lstat(path,function(err,stats){
+        var this_path = path.resolve(thisfolder + "\\" + fold.shift());
+        fs.lstat(this_path,function(err,stats){
           if (!err){
             if (stats.isDirectory()){
-              recurseFolders(path,endIterate)
+              recurseFolders(this_path,endIterate)
             } else {
-              if (!filetypes || (filetypes && filetypes.length > 0 && fileMatch(path)) ){
-                arr.push(path);
+              if (!filetypes || (filetypes && filetypes.length > 0 && fileMatch(this_path)) ){
+                arr.push(this_path);
               }
               endIterate(null);
             }
