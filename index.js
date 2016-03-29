@@ -24,7 +24,7 @@ function getFilesRecursiveAsync(folder,callback,filetypes,progress){
         thiscallback(null,files)
       }
       function iterateFiles(){
-        var this_path = path.resolve(thisfolder + "\\" + fold.shift());
+        var this_path = path.resolve(thisfolder + path.sep + fold.shift());
         fs.lstat(this_path,function(err,stats){
           if (!err){
             if (stats.isDirectory()){
@@ -60,7 +60,6 @@ function getFilesRecursiveAsync(folder,callback,filetypes,progress){
 
   function fileMatch(file){
     if (filetype_regexp.length == 0){console.log("true",file);return true}
-    //var ext = file.split(".").pop().toLowerCase()
     for (var i=0;i<filetype_regexp.length;i++){
       if (file.match(filetype_regexp[i]) !== null) {
         return true
