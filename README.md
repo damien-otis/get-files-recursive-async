@@ -3,7 +3,7 @@
 
 Usage:
 
-var getFilesRecursiveAsync = require('getFilesRecursiveAsync');
+var getFilesRecursiveAsync = require('get-files-recursive-async');
 
 var folder = "~/";
 
