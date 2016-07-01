@@ -27,8 +27,12 @@ function getFilesRecursiveAsync(folder,callback,filetypes,progress,not_recursive
         var this_path = path.resolve(thisfolder + path.sep + fold.shift());
         fs.lstat(this_path,function(err,stats){
           if (!err){
-            if (stats.isDirectory() && not_recursive !== true){
-              recurseFolders(this_path,endIterate)
+            if (stats.isDirectory()){
+            	if ( not_recursive !== true) {
+              	recurseFolders(this_path,endIterate)
+              } else {
+              	endIterate(null);              	
+              }
             } else {
               if (filetypes.length == 0 || (filetypes.length > 0 && fileMatch(this_path)) ){
                 arr.push(this_path);
