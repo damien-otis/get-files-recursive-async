@@ -4,7 +4,7 @@ var fs = require('fs');
 //*****************************************************************************************************
 //non-blocking recursive list of files, with file extension matching - node.js
 //
-function getFilesRecursiveAsync(folder,callback,filetypes,progress){
+function getFilesRecursiveAsync(folder,callback,filetypes,progress,not_recursive){
   var files = [];
 
   var filetype_regexp = [];
@@ -27,7 +27,7 @@ function getFilesRecursiveAsync(folder,callback,filetypes,progress){
         var this_path = path.resolve(thisfolder + path.sep + fold.shift());
         fs.lstat(this_path,function(err,stats){
           if (!err){
-            if (stats.isDirectory()){
+            if (stats.isDirectory() && not_recursive !== true){
               recurseFolders(this_path,endIterate)
             } else {
               if (filetypes.length == 0 || (filetypes.length > 0 && fileMatch(this_path)) ){
@@ -59,7 +59,7 @@ function getFilesRecursiveAsync(folder,callback,filetypes,progress){
   recurseFolders(folder,callback);
 
   function fileMatch(file){
-    if (filetype_regexp.length == 0){console.log("true",file);return true}
+    if (filetype_regexp.length == 0){return true}
     for (var i=0;i<filetype_regexp.length;i++){
       if (file.match(filetype_regexp[i]) !== null) {
         return true
